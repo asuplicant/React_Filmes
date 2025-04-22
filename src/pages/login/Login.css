@@ -1,0 +1,21 @@
+/* A mãe de todos: */
+.main_login{
+    display: flex;
+    height: 100vh;
+}
+
+/* Banner da esquerda: */
+.banner{
+    background-image: url("../../assets/img/fundoLogin.png");
+    flex: 1;
+
+    /* Modificar algumas características da imagem: */
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+/* Form de Login da direita: */
+.section_login{
+    flex: 1;
+}
