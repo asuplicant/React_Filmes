@@ -1,21 +1,85 @@
-/* A mãe de todos: */
-.main_login{
+/* A mãe de todos */
+.main_login {
     display: flex;
     height: 100vh;
 }
 
-/* Banner da esquerda: */
-.banner{
+
+/* Banner da  Esquerda: */
+.banner {
     background-image: url("../../assets/img/fundoLogin.png");
     flex: 1;
 
-    /* Modificar algumas características da imagem: */
+    /* Modificar algumas características da imagem */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-
 }
+
+
 /* Form de Login da direita: */
-.section_login{
+.section_login {
     flex: 1;
+
+    background-color: #a11326;
+
+
+    /* Centraliza o campo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section_login img {
+    width: 200px;
+    height: 80px;
+}
+
+.form_login {
+    color: white;
+
+    width: 70%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form_login h1 {
+    /* Vai deixar o titúlo com letra maiúsculas */
+    text-transform: uppercase;
+}
+
+.campo_input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.campos_login{
+    width: 100%;
+}
+
+.campo_input input{
+    height: 30px;
+    padding: 0px 10px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 10px;
+    box-shadow: 1px 4px 0px #0000002b;
+}
+
+/* RESPONSIVIDADE */
+
+/* Me dê  algumas características a partir de um tamanho de tela */
+@media screen and (max-width: 768px) {
+    /* 0px -> 768px */
+    .banner{
+        /* Desaparece o banner lateral */
+        display: none;  
+    }
 }
