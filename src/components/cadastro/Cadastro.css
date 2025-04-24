@@ -20,4 +20,45 @@
    width: 100%;
 
    margin-top: 5px;
+   border-color: #73061B;
+   
+   border-width: 1px;
+   border-radius: 1px;
+   border-style: solid;
+}
+
+.campos_cadastro{
+    display: flex;
+    padding-top: 60px;
+
+    gap: 25px;
+
+    align-items: end;
+}
+
+/* Modificando o Input e o Select */
+
+.campo_cad_nome input,
+.campo_cad_genero select
+{
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 5px;
+    width: 300px;
+    height: 30px;
+
+    box-shadow: 1px 4px 4px 0px #00000045;
+
+    margin-top: 7px;
+}
+
+.campo_cad_genero,
+.campo_cad_nome{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+
 }
