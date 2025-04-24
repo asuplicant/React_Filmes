@@ -1,0 +1,23 @@
+.section_cadastro{
+    background-color: #a11326;
+    color: white;
+    padding: 50px 0;
+
+}
+
+.form_cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_cadastro h1{
+    text-transform: uppercase;
+}
+
+.form_cadastro hr{
+   max-width: 300px;
+   width: 100%;
+
+   margin-top: 5px;
+}

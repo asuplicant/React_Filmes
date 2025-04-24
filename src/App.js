@@ -1,14 +1,14 @@
 // Chamar as telas LOGIN.
 
 import './App.css';
-import CadastroFilme from "./pages.cadastroFilme/CadastroFilme";
+import CadastroFilme from './pages/cadastroFilme/CadastroFilme';
 // import Login from './pages/login/Login';
 
 function App() {
   return (
     <>
     {/* Chamar as páginas */}
-      {/* <Login/> */}
+    {/* <Login/> */}
       <CadastroFilme/>
     </>
   );
