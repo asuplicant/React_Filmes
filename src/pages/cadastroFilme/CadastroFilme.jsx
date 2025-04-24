@@ -7,7 +7,10 @@ const CadastroFilme = () => {
     return(
         <>
             <Header/>
-            <Cadastro/>
+            <main>
+                <Cadastro/>
+                <Lista/>
+            </main>
             <Footer/>
         </>
     )
