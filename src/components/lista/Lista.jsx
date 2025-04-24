@@ -1,8 +1,12 @@
 import "./Lista.css";
 
+// Importação de imagens:
+import Editar from "../../assets/img/pen-to-square-solid.svg";
+import Excluir from "../../assets/img/trash-can-regular.svg";
+
 const Lista = () => {
     return(
-        <section>
+        <section className="layout_grid listagem">
             <h1> Lista dos Filmes </h1>
             <hr/>
 
@@ -21,7 +25,12 @@ const Lista = () => {
                     </thead>
                     {/* tbody => Corpo da Tabela */}
                     <tbody>
-                        
+                        <tr className="item_lista">
+                            <td> Coraline </td>
+                            <td> Terror </td>
+                            <td><img src={Editar} alt="Caneta" /></td>
+                            <td><img src={Excluir} alt="Lixeira" /></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
