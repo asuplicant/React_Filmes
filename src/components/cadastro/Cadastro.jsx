@@ -16,9 +16,9 @@ const Cadastro = (props) => {
                         <label htmlFor="genero">Gênero</label>
                         <select name="genero" id="">
                             <option  value="" disabled selected>Selecione</option>
-                            <option value="">op 1</option>
-                            <option value="">op 2</option>
-                            <option value="">op 3</option>
+                            <option value="">Feminino</option>
+                            <option value="">Masculino</option>
+                            <option value="">Outro</option>
                         </select>
                     </div>
                     <Botao nomeDoBotao="Cadastrar"/>

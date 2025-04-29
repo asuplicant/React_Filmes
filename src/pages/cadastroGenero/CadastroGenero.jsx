@@ -15,6 +15,7 @@ const CadastroGenero = () => {
                     />
                     <Lista
                     nomeLista="Lista de Gênero"
+                    visi_lista="none"
                     />
             </main>
         <Footer/>
