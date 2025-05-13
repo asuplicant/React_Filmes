@@ -10,10 +10,12 @@ import Footer from "../../components/footer/Footer";
 
 const CadastroGenero = () => {
 
-    // Nome do Gênero
     const [genero, setGenero] = useState("");
 
-    function alerta(icone, mesagem) {
+
+    function alerta(icone, mensagem) {
+        //  ---------- ALERTA  ----------
+
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -27,28 +29,35 @@ const CadastroGenero = () => {
         });
         Toast.fire({
             icon: icone,
-            title: mesagem
+            title: mensagem
         });
+
+        // ---------- FIM DO ALERTA  ----------
     }
 
-    async function cadastrarGenero(evt) {
-        evt.preventDefault();
-        //verificar se o input está vindo vazio
-        if (genero.trim() !== "") {
-            //try => tentar(o esperado)
-            //catch => lança a exceção
+    async function cadastrarGenero(e) {
+        e.preventDefault();
+
+        // Verificar se o input está vindo vazio.
+        if (genero.trim() != "") {
+
             try {
-                // Cadastrra um Genero: POST.
+                // Cadastrar um genero: POST.
                 await api.post("genero", { nome: genero });
-                alerta("success", "Cadastro realizado com sucesso")
-                setGenero("");
+                alerta("sucess", "Cadastro realizado com sucesso!")
+                setGenero("")
             } catch (error) {
-                alerta("error", "Erro! entre em contato com o suporte!")
+                alerta("error", "Entre em contato com o suporte.")
                 console.log(error);
             }
         } else {
-            alerta("warning", "Preencha o campo")
+            alerta("error", "O campo precisa estar preenchido!")
         }
+
+
+        // Try => Tentar (o esperado).
+        // Catch => Lança a exceção.
+
     }
 
     return (
@@ -56,24 +65,30 @@ const CadastroGenero = () => {
             <Header />
             <main>
                 <Cadastro
-                    tituloCadastro="Cadastro de Gênero"
+                    tituloCadastro="Cadastro do Gênero"
                     visibilidade="none"
-                    campoPlaceholder="Gênero"
-                    //atribuindo a função:
+                    placeholder="gênero"
+
+                    //atribuindo a funcao:
                     funcCadastro={cadastrarGenero}
-                    //atribuindo o valor do input:
+
+                    // atribuindo o valor do input:
                     valorInput={genero}
-                    //atribuindo a função que atualiza o meu genero:
+
+                    // atribuindo a funcao do que atualiza o meu genero 
                     setValorInput={setGenero}
+
                 />
+
                 <Lista
-                    nomeLista="Lista de Gênero"
-                    visi_lista="none"
+                    tituloLista="Gênero"
+                    visibilidade="none"
                 />
             </main>
             <Footer />
         </>
-    )
+    );
 }
+
 
 export default CadastroGenero;
