@@ -26,7 +26,7 @@ const Lista = (props) => {
                     {/* tbody => Corpo da Tabela */}
                     <tbody >
                         <tr className="item_lista">
-                            <td data-cell="Nome"> Coraline e o Mundo Secreto </td>
+                            <td data-cell="Nome"> XXXXXXXXXX </td>
                             <td data-cell="Gênero" style={{display:props.visi_lista}} > Terror/Drama/Mistério </td>
                             <td data-cell="Editar"><img src={Editar} alt="" /></td>
                             <td data-cell="Excluir"><img src={Excluir} alt="" /></td>
@@ -35,7 +35,7 @@ const Lista = (props) => {
                     <tbody >
                         <tr className="item_lista">
                             <td style={{display:props.visi_lista}} data-cell="Nome"> Edward Mãos de Tesoura </td>
-                            <td data-cell="Gênero"> Terror/Suspense/Drama/Fantasia </td>
+                            <td data-cell="Gênero"> XXXXXXXXXX </td>
                             <td data-cell="Editar"><img src={Editar} alt="" /></td>
                             <td data-cell="Excluir"><img src={Excluir} alt="" /></td>
                         </tr>
