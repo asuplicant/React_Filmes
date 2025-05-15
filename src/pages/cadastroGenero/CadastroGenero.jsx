@@ -76,7 +76,8 @@ const CadastroGenero = () => {
     // Excluir Genero
     async function excluirGenero(generoId) {
         try {
-            await api.delete(`genero/${generoId.IdGenero}`)
+            await api.delete(`genero/${generoId.idGenero}`)
+            alerta("success", "Exclusão realizada com sucesso!")
         } catch (error) {
             console.log(error);
 
