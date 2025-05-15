@@ -82,49 +82,49 @@ const CadastroGenero = () => {
             console.log(error);
 
         }
+        listarGenero();
     }
 
-        //funcao de excluir o genero ;)
+    //funcao de excluir o genero ;)
 
-        //teste: validar o genero
-        //useEffect(<function>, <dependency>)
-        // useEffect(() => {
-        //     console.log(genero);
-        // },[genero]);
-        //fim do teste
+    //teste: validar o genero
+    //useEffect(<function>, <dependency>)
+    // useEffect(() => {
+    //     console.log(genero);
+    // },[genero]);
+    //fim do teste
 
-        // Assim que a página renderizar, o método listarGenero() será chamado
-        useEffect(() => {
-            listarGenero();
-        }, [])
+    // Assim que a página renderizar, o método listarGenero() será chamado
+    useEffect(() => {
+        listarGenero();
+    }, [genero])
 
+    return (
+        <>
+            <Header />
+            <main>
+                <Cadastro
+                    tituloCadastro="Cadastro de Gênero"
+                    visibilidade="none"
+                    placeholder="gênero"
 
-        return (
-            <>
-                <Header />
-                <main>
-                    <Cadastro
-                        tituloCadastro="Cadastro de Gênero"
-                        visibilidade="none"
-                        placeholder="gênero"
+                    //Atribuindo a função:
+                    funcCadastro={cadastrarGenero}
+                    //Atribuindo o valor ao input:
+                    valorInput={genero}
+                    //Atribuindo a função que atualiza o meu genero:
+                    setValorInput={setGenero}
+                />
+                <Lista
+                    nomeLista="Lista de Gêneros"
+                    visibilidade="none"
+                    lista={listaGenero}
+                    funcExcluir={excluirGenero}
+                />
+            </main>
+            <Footer />
+        </>
+    )
+}
 
-                        //Atribuindo a função:
-                        funcCadastro={cadastrarGenero}
-                        //Atribuindo o valor ao input:
-                        valorInput={genero}
-                        //Atribuindo a função que atualiza o meu genero:
-                        setValorInput={setGenero}
-                    />
-                    <Lista
-                        nomeLista="Lista de Gêneros"
-                        visibilidade="none"
-                        lista={listaGenero}
-                        funcExcluir = {excluirGenero}
-                    />
-                </main>
-                <Footer />
-            </>
-        )
-    }
-
-    export default CadastroGenero;
+export default CadastroGenero;
