@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const apiPorta = "5257";
+const apiPorta = "7209"
 
 // apiLocal = Recebe o endereço da API.
-const apiLocal = `http://localhost:${apiPorta}/api/`;
-// const apiLocal = "https://localhost:7209/api/";
+const apiLocal = `https://localhost:${apiPorta}/api/`;
+
 
 
 const api = axios.create({
