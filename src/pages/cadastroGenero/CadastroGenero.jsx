@@ -77,19 +77,27 @@ const CadastroGenero = () => {
 
     // Excluir Genero
     async function excluirGenero(generoId) {
-
-        try {
-            // INTERPOLAÇÃO é diferente de CONCATENAÇÃO
-            // Interpolação: (`genero/${generoId.idGenero}`)
-            // Concatenação: "Um" + "Dois" = UmDois.
-            await api.delete(`genero/${generoId.idGenero}`)
-            alertar("success", "Exclusão realizada com sucesso!")
-        } catch (error) {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: "Você não poderá desfazer esta ação!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, apagar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                api.delete(`genero/${generoId.idGenero}`);
+                alertar("success", "Gênero Excluido!")
+            }
+        }).catch(error => {
             console.log(error);
-
-        }
-        listarGenero();
+            alertar("error", "Erro ao Excluir!");
+        });
     }
+    listarGenero();
+
 
     // HOOKS: useEffect(
     // R: Effect :> Efeito colateral das coisas; Efeito a partir de uma alteração de estado.
