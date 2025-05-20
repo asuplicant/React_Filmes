@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 
 import api from "../../Services/services";
 
-//importar o sweet alert:
+//importar o Sweet Alert:
 import Swal from 'sweetalert2';
 
-// importação de componentes:
+// Importação de Componentes:
 import Cadastro from "../../components/cadastro/Cadastro";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
@@ -13,11 +13,12 @@ import Lista from "../../components/lista/Lista";
 
 const CadastroGenero = () => {
 
-    // Só usamos UseState quando precisamos guarfdar uma informação que muda e o React
+    // Só usamos UseState quando precisamos guardar uma informação que muda e o React
     // precisa acompanhar.
     const [genero, setGenero] = useState("");
     const [listaGenero, setListaGenero] = useState([]);
 
+    // Alertar.
     function alertar(icone, mensagem) {
         const Toast = Swal.mixin({
             toast: true,
@@ -41,10 +42,11 @@ const CadastroGenero = () => {
         e.preventDefault();
         //verificar se o input está vindo vazio
         if (genero.trim() !== "") {
-            //try => tentar(o esperado)
-            //catch => lança a exceção
+            // TRY CATCH = Tratamento de Exceção.
+            // Try => Tentar (o esperado).
+            // Catch => Lança a exceção.
             try {
-                //cadastrar um gênero: post
+                //cadastrar um gênero: POST.
                 await api.post("genero", { nome: genero });
                 alertar("success", "Cadastro realizado com sucesso!")
                 setGenero("");
@@ -115,7 +117,7 @@ const CadastroGenero = () => {
         });
         if (novoGenero) {
             try {
-                api.put(`genero/${genero.idGenero}`, {nome: novoGenero});
+                api.put(`genero/${genero.idGenero}`, { nome: novoGenero });
                 Swal.fire(`O gênero modificado foi: ${novoGenero}`);
             } catch (error) {
                 console.log(error);
@@ -161,6 +163,7 @@ const CadastroGenero = () => {
                     tituloCadastro="Cadastro de Gênero"
                     visibilidade="none"
                     placeholder="gênero"
+
 
                     //Atribuindo a função:
                     funcCadastro={cadastrarGenero}
