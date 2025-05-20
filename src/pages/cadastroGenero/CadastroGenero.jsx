@@ -13,11 +13,12 @@ import Lista from "../../components/lista/Lista";
 
 const CadastroGenero = () => {
 
-    //nome do genero 
+    // Só usamos UseState quando precisamos guarfdar uma informação que muda e o React
+    // precisa acompanhar.
     const [genero, setGenero] = useState("");
     const [listaGenero, setListaGenero] = useState([]);
 
-    function alerta(icone, mensagem) {
+    function alertar(icone, mensagem) {
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -45,14 +46,15 @@ const CadastroGenero = () => {
             try {
                 //cadastrar um gênero: post
                 await api.post("genero", { nome: genero });
-                alerta("success", "Cadastro realizado com sucesso!")
+                alertar("success", "Cadastro realizado com sucesso!")
                 setGenero("");
+                listarGenero();
             } catch (error) {
-                alerta("error", "Erro! Entre em contato com o suporte!")
+                alertar("error", "Erro! Entre em contato com o suporte!")
                 console.log(error);
             }
         } else {
-            alerta("error", "Erro! Preencha o campo")
+            alertar("error", "Erro! Preencha o campo")
         }
     }
 
@@ -75,9 +77,13 @@ const CadastroGenero = () => {
 
     // Excluir Genero
     async function excluirGenero(generoId) {
+
         try {
+            // INTERPOLAÇÃO é diferente de CONCATENAÇÃO
+            // Interpolação: (`genero/${generoId.idGenero}`)
+            // Concatenação: "Um" + "Dois" = UmDois.
             await api.delete(`genero/${generoId.idGenero}`)
-            alerta("success", "Exclusão realizada com sucesso!")
+            alertar("success", "Exclusão realizada com sucesso!")
         } catch (error) {
             console.log(error);
 
@@ -85,14 +91,29 @@ const CadastroGenero = () => {
         listarGenero();
     }
 
-    //funcao de excluir o genero ;)
+    // HOOKS: useEffect(
+    // R: Effect :> Efeito colateral das coisas; Efeito a partir de uma alteração de estado.
 
-    //teste: validar o genero
-    //useEffect(<function>, <dependency>)
+    // Função: () :> {},
+    // R: O efeito que quero que aconteça.
+
+    // Dependência: []
+    // R: Vazio (O Efeito acontece na primeira vez que a tela é "montada", ou quando for recarregada
+    // com dependência (TODA vez que o STATE sofrer alteração, o EFEITO acontecerá).
+
+
+
+    // function() = {} função
+    // () => {} função anônima ou Arrow Function
+
+    // Função de excluir o gênero;
+    // TESTE: Validar o gênero.
+    // * useEffect(<function>, <dependency>) *
     // useEffect(() => {
     //     console.log(genero);
     // },[genero]);
-    //fim do teste
+
+    // FIM DO TESTE.
 
     // Assim que a página renderizar, o método listarGenero() será chamado
     useEffect(() => {
