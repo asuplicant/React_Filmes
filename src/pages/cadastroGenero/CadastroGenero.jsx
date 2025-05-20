@@ -98,6 +98,31 @@ const CadastroGenero = () => {
     }
     listarGenero();
 
+    async function editarGenero(genero) {
+
+        const { value: novoGenero } = await Swal.fire({
+            title: "Modifique seu gênero",
+            input: "text",
+            inputLabel: "Novo gênero",
+            inputValue: genero.nome,
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+
+                    return "O campo precisa estar preenchido.";
+                }
+            }
+        });
+        if (novoGenero) {
+            try {
+                api.put(`genero/${genero.idGenero}`, {nome: novoGenero});
+                Swal.fire(`O gênero modificado foi: ${novoGenero}`);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
 
     // HOOKS: useEffect(
     // R: Effect :> Efeito colateral das coisas; Efeito a partir de uma alteração de estado.
@@ -109,7 +134,7 @@ const CadastroGenero = () => {
     // R: Vazio (O Efeito acontece na primeira vez que a tela é "montada", ou quando for recarregada
     // com dependência (TODA vez que o STATE sofrer alteração, o EFEITO acontecerá).
 
-
+    // ------------------------------------------------------------------------------------------------
 
     // function() = {} função
     // () => {} função anônima ou Arrow Function
@@ -149,6 +174,7 @@ const CadastroGenero = () => {
                     visibilidade="none"
                     lista={listaGenero}
                     funcExcluir={excluirGenero}
+                    funcEditar={editarGenero}
                 />
             </main>
             <Footer />

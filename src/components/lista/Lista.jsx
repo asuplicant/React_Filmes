@@ -45,7 +45,7 @@ const Lista = (props) => {
                                         <img
                                             src={Editar}
                                             alt="caneta"
-                                            onClick={props.editarGenero}
+                                            onClick={() => { props.funcEditar(item) }}
                                         />
                                     </td>
                                     <td data-cell="Excluir">
@@ -69,7 +69,7 @@ const Lista = (props) => {
             {props.lista && props.lista.length > itensPorPagina && (
                 <div className="paginacao" style={{ marginTop: '1rem', textAlign: 'center' }}>
                     <button onClick={() => setPaginaAtual(prev => Math.max(prev - 1, 1))} disabled={paginaAtual === 1}>
-                        ←
+
                     </button>
 
                     <span style={{ margin: '0 1rem' }}>
@@ -77,7 +77,7 @@ const Lista = (props) => {
                     </span>
 
                     <button onClick={() => setPaginaAtual(prev => Math.min(prev + 1, totalPaginas))} disabled={paginaAtual === totalPaginas}>
-                        →
+
                     </button>
                 </div>
             )}
