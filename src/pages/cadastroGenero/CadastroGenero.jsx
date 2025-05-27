@@ -18,7 +18,7 @@ const CadastroGenero = () => {
     const [genero, setGenero] = useState("");
     const [listaGenero, setListaGenero] = useState([]);
 
-    // Alertar.
+    // Mensagem de Alerta.
     function alertar(icone, mensagem) {
         const Toast = Swal.mixin({
             toast: true,
@@ -37,7 +37,7 @@ const CadastroGenero = () => {
         });
     }
 
-    // Cadastrar Genero.
+    // Cadastrar Gênero.
     async function cadastrarGenero(e) {
         e.preventDefault();
         //verificar se o input está vindo vazio
@@ -163,6 +163,7 @@ const CadastroGenero = () => {
                     tituloCadastro="Cadastro de Gênero"
                     visibilidade="none"
                     placeholder="gênero"
+                    tipoLista="gênero"
 
 
                     //Atribuindo a função:
@@ -178,6 +179,7 @@ const CadastroGenero = () => {
                     lista={listaGenero}
                     funcExcluir={excluirGenero}
                     funcEditar={editarGenero}
+                    tipoLista="genero"
                 />
             </main>
             <Footer />

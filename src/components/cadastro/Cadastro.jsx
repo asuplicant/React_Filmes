@@ -13,11 +13,8 @@ const Cadastro = (props) => {
                         <input
                             type="text"
                             name="nome"
-                            placeholder={`Digite o nome do filme`}
+                            placeholder={`Digite o nome do ${props.placeholder}`}
                             value={props.valorInput}
-                            //ao mudar o input algo acontece
-                            //atualizar o estado do pai ao digitar
-                            //targer está indo buscar o valor do "e"
                             onChange={(e) => props.setValorInput(e.target.value)}
                         />
                     </div>
@@ -26,9 +23,9 @@ const Cadastro = (props) => {
                         <select name="genero" id=""
                             value={props.valorSelect}
                             onChange={(e) => props.setValorSelect(e.target.value)}>
-                            <option value="" disabled selected> Selecione </option>
+                            <option value="" disabled selected>Selecione</option>
                             {props.lista && props.lista.length > 0 && props.lista.map((itemGenero) =>
-                                <option value="{itemGenero.idGenero}"> {itemGenero.nome} </option>
+                                <option value={itemGenero.idGenero}>{itemGenero.nome}</option>
                             )}
                         </select>
                     </div>

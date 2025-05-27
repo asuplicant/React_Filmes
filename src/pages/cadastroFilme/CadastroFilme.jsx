@@ -13,31 +13,52 @@ import Lista from "../../components/lista/Lista";
 
 const CadastroFilme = () => {
 
-    const [listaGenero, setListaGenero] = useState([]);
     const [genero, setGenero] = useState("");
     const [filme, setFilme] = useState("");
+    const [listaGenero, setListaGenero] = useState([]);
+    const [listaFilme, setListaFilme] = useState([]);
 
-    // Alertar.
-        function alertar(icone, mensagem) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: icone,
-                title: mensagem
-            });
+    function alertar(icone, mesagem) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: icone,
+            title: mesagem
+        });
+    }
+
+    // Cadastrar Filme.
+    async function cadastrarFilme(e) {
+        e.preventDefault();
+        //tratemento de exceção
+        if (filme.trim() !== "") {
+
+            try {
+                await api.post("filme", { titulo: filme, idGenero: genero })
+                alertar("success", "Sucesso! Cadastro realizado com sucesso")
+                setFilme("");
+                setGenero("");
+            } catch (error) {
+                console.log(error);
+            }
+
+        } else {
+            alertar("error", "Erro! Preencha o campo")
         }
+        // alert("aaaaaaaa");
+    }
 
-    // Funcão para trazer os gêneros do meu select.
-    async function listarGenero(id) {
+    // Listar Gênero.
+    async function listarGenero() {
         try {
             const resposta = await api.get("genero");
             setListaGenero(resposta.data);
@@ -46,29 +67,24 @@ const CadastroFilme = () => {
         }
     }
 
-    // TRY CATCH = Tratamento de Exceção.
-    // Try => Tentar (o esperado).
-    // Catch => Lança a exceção.
-
-    async function cadastrarFilme() {
-        if (filme.trim() !== "") {
-            try {
-                await api.post("filme", {titulo: filme, idGenero: genero});
-                alertar("success", "Sucesso! Cadastro realizado com sucesso.")
-                setFilme("");
-                setGenero("");
-            } catch (error) {
-                console.log(error);
-            }
-        } else {
-            alertar("error", "Erro! Preencha os campos.")
+    // Listar Filme.
+    async function listarFilme() {
+        try {
+            const resposta = await api.get("filme")
+            setListaFilme(resposta.data);
+        } catch (error) {
+            console.log();
         }
     }
- 
+
     useEffect(() => {
         listarGenero();
+        listarFilme();
     }, []);
 
+
+
+    // Return.
     return (
         <>
             <Header />
@@ -82,13 +98,16 @@ const CadastroFilme = () => {
                     funcCadastro={cadastrarFilme}
 
                     valorInput={filme}
+                    //atribuindo a função que atualiza o meu genero:
                     setValorInput={setFilme}
 
                     valorSelect={genero}
                     setValorSelect={setGenero}
                 />
                 <Lista
-                    nomeLista="Lista de Filme"
+                    nomeLista="Lista de Filmes"
+                    tipoLista="filme"
+                    lista={listaFilme}
                 />
             </main>
             <Footer />

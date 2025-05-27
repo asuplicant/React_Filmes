@@ -36,11 +36,13 @@ const Lista = (props) => {
                     <tbody >
                         {listaPaginada && listaPaginada.length > 0 ? (
                             listaPaginada.map((item) => (
-                                <tr className="item_lista" key={item.idGenero}>
+                                <tr className="item_lista" key={props.tipoLista === "genero" ? item.idGenero : item.idFilme}>
                                     <td data-cell="Nome">
-                                        {item.nome}
+                                        {props.tipoLista === "genero" ? item.nome : item.titulo}
                                     </td>
-                                    <td data-cell="Gênero" style={{ display: props.visibilidade }}> Terror </td>
+                                    <td data-cell="Gênero" style={{ display: props.visibilidade }}> Terror 
+                                        {item.genero?.nome}
+                                    </td>
                                     <td data-cell="Editar">
                                         <img
                                             src={Editar}
